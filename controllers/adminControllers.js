@@ -17,3 +17,16 @@ exports.postDeleteMessage = (req, res) => {
         }
     })
 }
+
+exports.postFilterMail = (req, res) => {
+    const key = req.body.key;
+    Message.find({ $text: { $search: key } }).exec((err, docs) => {
+        if (err) {
+            console.log(err);
+            res.end();
+        } else {
+            const body = JSON.stringify(docs);
+            res.send(body);
+        }
+    });
+};

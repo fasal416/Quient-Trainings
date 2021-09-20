@@ -16,6 +16,8 @@ const messageSchema = mongoose.Schema({
     dateTime: { date: String, time: String }
 });
 
+messageSchema.index({ name: 'text', email: 'text', subject: 'text' });
+
 const Message = mongoose.model("message", messageSchema);
 
 

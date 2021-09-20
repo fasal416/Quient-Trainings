@@ -71,18 +71,6 @@
         onscroll(document, headerScrolled)
     }
 
-    let backtotop = select('.back-to-top')
-    if (backtotop) {
-        const toggleBacktotop = () => {
-            if (window.scrollY > 100) {
-                backtotop.classList.add('active')
-            } else {
-                backtotop.classList.remove('active')
-            }
-        }
-        window.addEventListener('load', toggleBacktotop)
-        onscroll(document, toggleBacktotop)
-    }
 
     on('click', '.mobile-nav-toggle', function(e) {
         select('#navbar').classList.toggle('navbar-mobile')
@@ -113,6 +101,11 @@
     }, true)
 
     window.addEventListener('load', () => {
+        $('.custom-preloader').fadeOut();
+    });
+
+
+    window.addEventListener('load', () => {
         if (window.location.hash) {
             if (select(window.location.hash)) {
                 scrollto(window.location.hash)
@@ -129,5 +122,10 @@
         })
     });
 
+    $(".floating-btn-fab").click(function() {
+        $('.floating-btn-fab .wrap').toggleClass("ani");
+        $('.floating-btn').toggleClass("open");
+        $('.img-fab.img').toggleClass("close");
+    });
 
 })()

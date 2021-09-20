@@ -8,5 +8,7 @@ router.get('/', adminControllers.getAdmin);
 
 router.post('/delete-msg/:id', adminControllers.postDeleteMessage);
 
+router.post('/filter-mail', adminControllers.postFilterMail);
+
 
 module.exports = router;
